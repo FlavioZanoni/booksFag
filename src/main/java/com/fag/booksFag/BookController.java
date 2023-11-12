@@ -51,4 +51,10 @@ public class BookController {
     public ResponseEntity<Book> updateReadingProgress(@PathVariable Long id, @PathVariable int currentPage) {
         return ResponseEntity.ok(bookService.updateReadingProgress(id, currentPage));
     }
+
+    // Update book status
+    @PatchMapping("/{id}/status/{status}")
+    public ResponseEntity<Book> updateBookStatus(@PathVariable Long id, @PathVariable BookStatus status) {
+        return ResponseEntity.ok(bookService.updateBookStatus(id, status));
+    }
 }

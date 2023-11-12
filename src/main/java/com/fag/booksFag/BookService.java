@@ -28,7 +28,7 @@ public class BookService {
 
     // Update an existing book
     public Book updateBook(Long id, Book bookDetails) {
-        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado"));
         book.setTitle(bookDetails.getTitle());
         book.setAuthor(bookDetails.getAuthor());
         book.setPageCount(bookDetails.getPageCount());
@@ -44,11 +44,17 @@ public class BookService {
 
     // Update reading progress
     public Book updateReadingProgress(Long id, int currentPage) {
-        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado"));
         if(currentPage > 0 && currentPage <= book.getPageCount()) {
             book.setStatus(BookStatus.READING);
-            // Update additional fields if needed, e.g., a field to track current page
         }
+        return bookRepository.save(book);
+    }
+
+    // Update book status
+    public Book updateBookStatus(Long id, BookStatus status) {
+        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado"));
+        book.setStatus(status).orElseThrow(() -> new RuntimeException("Status invalido"));
         return bookRepository.save(book);
     }
 }

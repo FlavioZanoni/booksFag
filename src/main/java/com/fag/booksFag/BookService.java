@@ -54,7 +54,17 @@ public class BookService {
     // Update book status
     public Book updateBookStatus(Long id, BookStatus status) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado"));
-        book.setStatus(status).orElseThrow(() -> new RuntimeException("Status invalido"));
+        book.setStatus(status);
         return bookRepository.save(book);
+    }
+
+    // Get books by status
+    public List<Book> findBooksByStatus(BookStatus status) {
+        return bookRepository.findByStatus(status);
+    }
+
+    // Get books by author
+    public List<Book> findBooksByAuthor(String author) {
+        return bookRepository.findByAuthor(author);
     }
 }

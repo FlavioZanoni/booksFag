@@ -57,4 +57,16 @@ public class BookController {
     public ResponseEntity<Book> updateBookStatus(@PathVariable Long id, @PathVariable BookStatus status) {
         return ResponseEntity.ok(bookService.updateBookStatus(id, status));
     }
+
+    // Get books by status
+    @GetMapping("/status/{status}")
+    public List<Book> getBooksByStatus(@PathVariable BookStatus status) {
+        return bookService.findBooksByStatus(status);
+    }
+
+    // Get books by author
+    @GetMapping("/author/{author}")
+    public List<Book> getBooksByAuthor(@PathVariable String author) {
+        return bookService.findBooksByAuthor(author);
+    }
 }

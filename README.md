@@ -34,10 +34,15 @@ No terminal execute o comando na pasta desejada
    git clone git@github.com:FlavioZanoni/booksFag.git
 ```
 
+### De cd até o projeto
+
+```bash
+   cd booksFag
+```
+
 ### Docker
 
 O projeto pode ser executado de várias maneiras, porém para facilitar o processo de desenvolvimento e deploy, foi utilizado o Docker, onde é possível executar o projeto e o banco de dados com apenas um comando.
-
 Para executar a aplicação com o Docker, é necessário ter o mesmo instalado na máquina. Após isso, basta executar o comando:
 
 ```bash

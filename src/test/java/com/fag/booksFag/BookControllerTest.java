@@ -75,4 +75,8 @@ public class BookControllerTest {
                .andExpect(jsonPath("$.id", is(bookId.intValue())));
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }

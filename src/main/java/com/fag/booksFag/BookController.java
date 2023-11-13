@@ -17,7 +17,7 @@ public class BookController {
     @GetMapping
     public List<Book> getAllBooks() {
         return bookService.findAllBooks();
-    }
+    }  //testado
 
     // Get a book by ID
     @GetMapping("/{id}")
@@ -25,19 +25,19 @@ public class BookController {
         return bookService.findBookById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
-    }
+    }  //testado
 
     // Create a new book
     @PostMapping
     public Book createBook(@RequestBody Book book) {
         return bookService.saveBook(book);
-    }
+    }  //testado
 
     // Update a book
     @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book book) {
         return ResponseEntity.ok(bookService.updateBook(id, book));
-    }
+    }  //testado
 
     // Delete a book
     @DeleteMapping("/{id}")
@@ -47,13 +47,13 @@ public class BookController {
     }
 
     // Update reading progress
-    @PatchMapping("/{id}/progress/{currentPage}")
+    @PostMapping("/{id}/progress/{currentPage}")
     public ResponseEntity<Book> updateReadingProgress(@PathVariable Long id, @PathVariable int currentPage) {
         return ResponseEntity.ok(bookService.updateReadingProgress(id, currentPage));
     }
 
     // Update book status
-    @PatchMapping("/{id}/status/{status}")
+    @PostMapping("/{id}/status/{status}")
     public ResponseEntity<Book> updateBookStatus(@PathVariable Long id, @PathVariable BookStatus status) {
         return ResponseEntity.ok(bookService.updateBookStatus(id, status));
     }
@@ -62,11 +62,11 @@ public class BookController {
     @GetMapping("/status/{status}")
     public List<Book> getBooksByStatus(@PathVariable BookStatus status) {
         return bookService.findBooksByStatus(status);
-    }
+    }   //testado
 
     // Get books by author
     @GetMapping("/author/{author}")
     public List<Book> getBooksByAuthor(@PathVariable String author) {
         return bookService.findBooksByAuthor(author);
-    }
+    }  //testado
 }

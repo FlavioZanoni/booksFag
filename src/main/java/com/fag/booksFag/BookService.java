@@ -47,6 +47,7 @@ public class BookService {
         Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Livro não encontrado"));
         if(currentPage > 0 && currentPage <= book.getPageCount()) {
             book.setStatus(BookStatus.READING);
+            book.setCurrentPage(currentPage);
         }
         return bookRepository.save(book);
     }
